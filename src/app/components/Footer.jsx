@@ -52,7 +52,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center py-4 text-sm text-gray-400 border-t border-[#33353F]">
-        © {new Date().getFullYear()} Shivam Mittal. All rights reserved.
+        © {new Date().getFullYear()} Mukul Garg. All rights reserved.
       </div>
     </footer>
   );
