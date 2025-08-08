@@ -80,7 +80,35 @@ const experiences = [
   }
 ];
 
-const ExperienceCard = ({ experience, isEven }) => {
+const ExperienceCard = ({ experience, isEven, isMobile }) => {
+    if (isMobile) {
+    return (
+      <div className="flex flex-col items-start mb-12 relative bg-[#181818] rounded-lg p-6">
+        <div className="flex items-center mb-4">
+          <Image
+            src={experience.icon}
+            alt={experience.company_name}
+            width={40}
+            height={40}
+            className="rounded-full mr-3"
+          />
+          <div>
+            <h3 className="text-xl font-bold text-white">{experience.title}</h3>
+            <p className="text-base text-white font-medium">{experience.company_name}</p>
+            <p className="text-sm text-primary-500">{experience.date}</p>
+            <p className="text-sm text-gray-400">{experience.type}</p>
+          </div>
+        </div>
+        <p className="text-base text-gray-300 mb-3">{experience.description}</p>
+        <ul className="list-disc ml-5 text-sm text-gray-400 space-y-1">
+          {experience.points.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+  
   return (
     <div className="flex items-center mb-12 relative">
       <div className="absolute top-0 left-1/2 w-0.5 h-full bg-gray-700 transform -translate-x-1/2 z-0"></div>
@@ -161,7 +189,7 @@ const ExperienceCard = ({ experience, isEven }) => {
   );
 };
 
-const ExperienceSection = () => {
+const ExperienceSection = ( {isMobile}) => {
   return (
     <section className="text-white" id="experience">
       <div className="py-16 px-4 sm:px-6 lg:px-8">
@@ -174,6 +202,7 @@ const ExperienceSection = () => {
               key={index}
               experience={experience}
               isEven={index % 2 === 0}
+              isMobile={ isMobile }
             />
           ))}
         </div>
